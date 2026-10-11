@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tip Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="header">
+        <div>
+          <p class="eyebrow">Split the check</p>
+          <h1>Tip Calculator</h1>
+        </div>
+        <button
+          type="button"
+          id="theme-toggle"
+          class="theme-toggle"
+          aria-pressed="false"
+          aria-label="Switch to dark mode"
+        >
+          <span class="theme-icon" aria-hidden="true">🌙</span>
+          <span id="theme-label">Dark</span>
+        </button>
+      </header>
+
+      <section class="card">
+        <form id="tip-form" class="form" novalidate>
+          <div class="field">
+            <label for="bill">Bill amount</label>
+            <div class="input-wrap">
+              <span class="prefix" aria-hidden="true">$</span>
+              <input
+                id="bill"
+                name="bill"
+                type="number"
+                inputmode="decimal"
+                min="0.01"
+                step="0.01"
+                placeholder="0.00"
+                autocomplete="off"
+              />
+            </div>
+            <p id="bill-error" class="error" role="alert"></p>
+          </div>
+
+          <fieldset class="field">
+            <legend>Tip percentage</legend>
+            <div class="tip-options" role="group" aria-label="Tip percentage">
+              <button type="button" class="tip-btn" data-tip="10">10%</button>
+              <button type="button" class="tip-btn active" data-tip="15">
+                15%
+              </button>
+              <button type="button" class="tip-btn" data-tip="20">20%</button>
+              <button type="button" class="tip-btn" data-tip="custom">
+                Custom
+              </button>
+            </div>
+            <div id="custom-tip-wrap" class="input-wrap hidden">
+              <input
+                id="custom-tip"
+                name="custom-tip"
+                type="number"
+                inputmode="decimal"
+                min="0"
+                step="0.1"
+                placeholder="Enter % (e.g. 18)"
+                autocomplete="off"
+              />
+              <span class="suffix" aria-hidden="true">%</span>
+            </div>
+            <p id="tip-error" class="error" role="alert"></p>
+          </fieldset>
+
+          <div class="field">
+            <label for="people">Number of people</label>
+            <input
+              id="people"
+              name="people"
+              type="number"
+              inputmode="numeric"
+              min="1"
+              step="1"
+              value="1"
+              autocomplete="off"
+            />
+            <p id="people-error" class="error" role="alert"></p>
+          </div>
+        </form>
+
+        <aside class="results" aria-live="polite">
+          <h2>Your split</h2>
+          <div class="result-row">
+            <span>Tip amount</span>
+            <strong id="tip-amount">$0.00</strong>
+          </div>
+          <div class="result-row">
+            <span>Total amount</span>
+            <strong id="total-amount">$0.00</strong>
+          </div>
+          <div class="result-row highlight">
+            <span id="per-person-label">Amount per person</span>
+            <strong id="per-person">$0.00</strong>
+          </div>
+          <p id="status" class="status">Enter a bill amount to get started.</p>
+          <button type="button" id="reset" class="reset">Reset</button>
+        </aside>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
